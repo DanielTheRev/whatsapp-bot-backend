@@ -1,0 +1,50 @@
+{
+	"name": "backend",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"start": "nodemon src/index.ts",
+		"build": "rimraf dist && tsc",
+		"ts.check": "tsc --project tsconfig.json",
+		"add-build": "git add dist"
+	},
+	"nodemonConfig": {
+		"ignore": [
+			"./src/whatsapp/auth/*"
+		],
+		"delay": 1000
+	},
+	"pre-commit": [
+		"ts.check",
+		"build",
+		"add-build"
+	],
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"@hapi/boom": "^10.0.1",
+		"@whiskeysockets/baileys": "^6.5.0",
+		"bcryptjs": "^2.4.3",
+		"chalk": "^4.1.2",
+		"cors": "^2.8.5",
+		"dotenv": "^10.0.0",
+		"express": "^4.18.2",
+		"jsonwebtoken": "^9.0.2",
+		"mongoose": "^8.0.2",
+		"morgan": "^1.10.0",
+		"socket.io": "^4.7.2",
+		"xlsx": "https://cdn.sheetjs.com/xlsx-0.20.1/xlsx-0.20.1.tgz"
+	},
+	"devDependencies": {
+		"@types/bcryptjs": "^2.4.6",
+		"@types/cors": "^2.8.10",
+		"@types/express": "^4.17.12",
+		"@types/jsonwebtoken": "^8.5.1",
+		"@types/morgan": "^1.9.2",
+		"@types/node": "^15.9.0",
+		"nodemon": "^3.0.2",
+		"typescript": "^5.3.2"
+	}
+}
