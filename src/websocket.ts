@@ -3,7 +3,6 @@ import { Server } from 'http';
 import { Server as SocketServer } from 'socket.io';
 import jwt from 'jsonwebtoken';
 import { INITIAL_CONFIG } from './config';
-import { UserModel } from './models/user.model';
 import { startWhatsappController } from './whatsapp/whatsapp.controller';
 import { UserWhatsapp } from './interfaces/user.interface';
 
@@ -14,7 +13,9 @@ export const connectWS = (server: Server) => {
 		cors: {
 			origin: 'http://localhost:4200',
 			methods: ['GET', 'POST']
-		}
+		},
+		transports: ['websocket', 'polling'],
+		path: '/api/socket.io'
 	});
 	io.on('connection', async (socket) => {
 		console.log(chalk.blue(`Nuevo usuario conectado, id: ${socket.id}`));

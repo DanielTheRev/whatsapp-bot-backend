@@ -22,11 +22,6 @@ export const startWhatsappController = (data: UserWhatsapp) => {
 	updateUserSocketID(wspUser.userID, data.socket);
 	wspUser = { ...data, wspConnState: wspUser.wspConnState };
 	WspInstance(wspUser);
-	console.log({
-		userID: data.userID,
-		socketID: data.socket.id,
-		connectionState: data.wspConnState
-	});
 	data.socket.on('whatsapp-connection-connect', () => {
 		console.log('connection-connect');
 		createWspInstance(data);
