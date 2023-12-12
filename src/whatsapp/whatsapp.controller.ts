@@ -104,7 +104,7 @@ export const startWhatsappController = (data: UserWhatsapp) => {
 			try {
 				await delay(1000);
 				const messageSend = await getOrCreateUser(wspUser).wspInstance?.sendMessage(
-					`5491150562309@s.whatsapp.net`,
+					`${client.contacto_num}@s.whatsapp.net`,
 					{
 						text: Message
 					}
