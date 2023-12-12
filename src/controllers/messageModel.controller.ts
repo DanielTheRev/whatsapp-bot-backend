@@ -15,3 +15,14 @@ export const createMessageModels = async (req: Request, res: Response) => {
 
 	return res.json({ newMessageModelSaved });
 };
+
+export const deleteMessageModel = async (req: Request, res: Response) => {
+	const { modelID } = req.query;
+	try {
+		await messageModel.findByIdAndDelete(modelID);
+		return res.json({ message: 'Modelo eliminado' });
+	} catch (error) {
+		console.log(error);
+		return res.status(500).json({ message: 'Ocurrio un error al eliminar modelo' });
+	}
+};
