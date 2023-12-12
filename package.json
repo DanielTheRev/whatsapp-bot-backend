@@ -2,12 +2,11 @@
 	"name": "backend",
 	"version": "1.0.0",
 	"description": "",
-	"main": "index.js",
+	"main": "dist/index.js",
 	"scripts": {
-		"start": "nodemon src/index.ts",
-		"build": "rimraf dist && tsc",
-		"ts.check": "tsc --project tsconfig.json",
-		"add-build": "git add dist"
+		"start": "node .",
+		"dev": "nodemon src/index.ts",
+		"build": "tsc"
 	},
 	"nodemonConfig": {
 		"ignore": [
@@ -15,11 +14,6 @@
 		],
 		"delay": 1000
 	},
-	"pre-commit": [
-		"ts.check",
-		"build",
-		"add-build"
-	],
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
