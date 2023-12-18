@@ -5,7 +5,7 @@ import { IUser, IUserModel } from '../interfaces/user.interface';
 const UserSchema = new Schema<IUser>(
 	{
 		name: String,
-		email: String,
+		user_name: String,
 		gender: String,
 		password: String
 	},

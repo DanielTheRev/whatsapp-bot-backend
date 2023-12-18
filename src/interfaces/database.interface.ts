@@ -5,7 +5,7 @@ export interface DB_Item {
 
 export interface Database {
 	_id?: string;
-	userID: string;
+	owner_id: string;
 	nombre: string;
 	data: DB_Item[];
 }

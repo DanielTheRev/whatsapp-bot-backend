@@ -4,7 +4,7 @@ import { Server, Socket } from 'socket.io';
 
 export interface IUser extends Document {
 	name: string;
-	email: string;
+	user_name: string;
 	password: string;
 	gender: string;
 	encryptPassword: (password: string) => Promise<any>;
@@ -17,13 +17,13 @@ export interface IUserModel extends Model<IUser> {
 }
 
 export interface loginUserDTO {
-	email: string;
+	user_name: string;
 	password: string;
 }
 
 export interface RegisterUserDTO {
 	name: string;
-	email: string;
+	user_name: string;
 	password: string;
 	gender: string;
 }

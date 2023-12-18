@@ -7,7 +7,7 @@ import { INITIAL_CONFIG } from '../config';
 
 export const LoginUser = async (req: Request, res: Response) => {
 	const data = req.body as loginUserDTO;
-	const User = await UserModel.findOne({ email: data.email });
+	const User = await UserModel.findOne({ user_name: data.user_name });
 	if (!User) return res.status(400).json({ message: 'Usuario no encontrado' });
 
 	try {
@@ -22,7 +22,7 @@ export const LoginUser = async (req: Request, res: Response) => {
 				user: {
 					_id: User._id,
 					name: User.name,
-					email: User.email,
+					user_name: User.user_name,
 					gender: User.gender
 				},
 				token
@@ -59,7 +59,7 @@ export const verifyUserToken = async (req: Request, res: Response) => {
 			'_id',
 			'name',
 			'gender',
-			'email'
+			'user_name'
 		]);
 		return res.json({ user });
 	} catch (error) {
