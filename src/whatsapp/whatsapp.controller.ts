@@ -95,7 +95,7 @@ export const startWhatsappController = (data: UserWhatsapp) => {
 				UserTask[UserTaskIDX].tasks[taskIDX].progress = taskProgress;
 				UserTask[UserTaskIDX].tasks[taskIDX].state = 'Enviando';
 			}
-			let Message = MessageModelSelected.message.replace(/\$(\w+)/g, (_, variable) => {
+			let Message = MessageModelSelected.message.replace(/\{(\w+)\}/g, (_, variable) => {
 				if (variable === 'Saludo') {
 					return getDayStatus();
 				}
