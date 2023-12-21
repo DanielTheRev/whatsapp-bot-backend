@@ -15,3 +15,15 @@ export const createDatabase = async (req: Request, res: Response) => {
 
 	return res.json({ newDatabaseSaved });
 };
+
+export const deleteDatabase = async (req: Request, res: Response) => {
+	const { databaseID } = req.query;
+	try {
+		await DatabaseModel.findByIdAndDelete(databaseID);
+		return res.json({ message: 'Base de datos eliminada con éxito' });
+	} catch (error) {
+		return res
+			.status(500)
+			.json({ message: 'Error al eliminar base de datos, reinicie la pagina' });
+	}
+};

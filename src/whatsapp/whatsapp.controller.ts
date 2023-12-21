@@ -110,6 +110,7 @@ export const startWhatsappController = (data: UserWhatsapp) => {
 					}
 				);
 				console.log(messageSend);
+				console.log(`Mensaje ${index + 1} Enviado`);
 			} catch (error) {
 				console.log('No pudo enviarse el mensaje');
 				console.log(error);
