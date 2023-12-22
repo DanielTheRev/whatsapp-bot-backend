@@ -10,10 +10,26 @@ export const getMessageModels = async (req: Request, res: Response) => {
 
 export const createMessageModels = async (req: Request, res: Response) => {
 	const data = req.body as IMessageModel;
+	if (data._id) {
+		console.log('Peticion para actualizar un modelo de mensaje');
+		try {
+			const newMessageModelSaved = await messageModel.findByIdAndUpdate(
+				data._id.toString(),
+				data,
+				{ new: true }
+			);
+			return res.json({ message: 'Modelo actualizado con éxito', newMessageModelSaved });
+		} catch (error) {
+			console.log('Error al actualizar modelo de mensaje');
+			return res
+				.status(500)
+				.json({ message: 'Ocurrio un error al intentar modificar modelo de mensaje' });
+		}
+	}
 	const newMessageModel = new messageModel(data);
 	const newMessageModelSaved = await newMessageModel.save();
 
-	return res.json({ newMessageModelSaved });
+	return res.json({ message: 'Modelo creado y guardado con éxito', newMessageModelSaved });
 };
 
 export const deleteMessageModel = async (req: Request, res: Response) => {
