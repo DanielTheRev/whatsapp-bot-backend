@@ -15,7 +15,7 @@ export const connectWS = (server: Server) => {
 			methods: ['GET', 'POST']
 		},
 		transports: ['websocket', 'polling'],
-		path: '/api/socket.io'
+		path: '/project/whatsapp-bot/api/socket.io'
 	});
 	io.on('connection', async (socket) => {
 		console.log(chalk.blue(`Nuevo usuario conectado, id: ${socket.id}`));
