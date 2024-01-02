@@ -14,9 +14,9 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use('/api', AuthRouter);
-app.use('/api', DatabaseRouter);
-app.use('/api', MessageModelRouter);
+app.use('/project/whatsapp-bot/api', AuthRouter);
+app.use('/project/whatsapp-bot/api', DatabaseRouter);
+app.use('/project/whatsapp-bot/api', MessageModelRouter);
 
 const server = app.listen(app.get('port'), () => console.log('server on port: ', app.get('port')));
 
